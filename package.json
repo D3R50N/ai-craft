@@ -9,7 +9,7 @@
     "serve": "tsx --watch server"
   },
   "dependencies": {
-    "@nxpress/core": "file:/../nxpress/core",
+    "@nxpress/core": "^1.2.2",
     "bcryptjs": "^3.0.3",
     "cookie-parser": "^1.4.7",
     "jsonwebtoken": "^9.0.3",
