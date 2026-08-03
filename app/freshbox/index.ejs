@@ -1,15 +1,15 @@
 <main class="w-full">
-  
+
   <!-- HERO SECTION: "LES SAVEURS AUTHENTIQUES DE L'AFRIQUE!" -->
   <section class="relative bg-[#f8ebd8] pt-12 pb-20 px-6 sm:px-12 overflow-hidden text-center flex flex-col items-center justify-center">
-    
+
     <!-- Floating 3D Food Assets -->
     <div class="absolute top-12 left-10 md:left-24 w-16 md:w-24 pointer-events-none transform -rotate-12 animate-bounce duration-[3000ms]">
       <img src="https://pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG4135.png" alt="Plat Africain 3D" class="w-full h-auto drop-shadow-xl" />
     </div>
-    
-    <div class="absolute top-20 right-10 md:right-28 w-12 md:w-16 pointer-events-none transform rotate-12 animate-pulse">
-      <img src="https://pngimg.com/uploads/tomato/tomato_PNG12509.png" alt="Epices 3D" class="w-full h-auto drop-shadow-lg" />
+
+    <div class="absolute top-20 right-10 md:right-28 w-12 md:w-32 pointer-events-none transform rotate-12 animate-pulse">
+      <img src="https://pngimg.com/uploads/tomato/tomato_PNG12530.png" alt="Epices 3D" class="w-full h-auto drop-shadow-lg" />
     </div>
 
     <!-- Hero Content & Massive Typography -->
@@ -17,16 +17,12 @@
       <h1 class="font-outfit font-black text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] leading-[0.9] text-[#4a1c0d] tracking-tight uppercase select-none">
         SAVEURS<br />
         D'AFRIQUE<br />
-        UN<span class="inline-block w-20 sm:w-32 md:w-44"></span>IQUES!
+        UNI<span class="inline-block w-20 sm:w-32 md:w-[20rem]"></span>UES!
       </h1>
 
       <!-- Center Overlapping Chef/Eater Image -->
-      <div class="relative -mt-24 sm:-mt-40 md:-mt-52 mx-auto w-64 sm:w-96 md:w-[28rem] z-20">
-        <img 
-          src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80" 
-          alt="Dégustation Cuisine Africaine" 
-          class="w-full h-auto rounded-full object-cover aspect-square shadow-2xl border-4 border-[#ffc844]" 
-        />
+      <div class="relative -mt-24 sm:-mt-40 ml-[13rem] md:-mt-32 mx-auto w-64 sm:w-96 md:w-xs z-20">
+        <img src="/attieke.png" alt="Dégustation Cuisine Africaine" class="w-full h-auto object-center aspect-square drop-shadow-[0_2px_0_#4a1c0d]" />
       </div>
     </div>
   </section>
@@ -75,7 +71,7 @@
 
     <!-- FEATURED DISHES GRID -->
     <div id="dishesGrid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      
+
       <div class="bg-[#4a1c0d] text-white rounded-[2rem] p-8 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-[#381308] group hover:scale-[1.01] transition-transform">
         <div class="flex-grow space-y-3">
           <h3 class="font-outfit font-black text-2xl uppercase tracking-wide text-white">ATTIÉKÉ POISSON GRILLÉ</h3>
@@ -84,9 +80,7 @@
           </p>
           <div class="pt-2 flex items-center gap-4">
             <span class="font-outfit font-extrabold text-xl text-[#ffc844]">8 500 FCFA</span>
-            <button 
-              onclick="addToCart('Attiéké Poisson Grillé', 8500)"
-              class="px-6 py-2.5 rounded-full bg-[#ffc844] hover:bg-[#f2b930] text-[#4a1c0d] font-black text-xs uppercase shadow-md transition-all cursor-pointer">
+            <button onclick="addToCart('Attiéké Poisson Grillé', 8500)" class="px-6 py-2.5 rounded-full bg-[#ffc844] hover:bg-[#f2b930] text-[#4a1c0d] font-black text-xs uppercase shadow-md transition-all cursor-pointer">
               COMMANDER
             </button>
           </div>
@@ -104,9 +98,7 @@
           </p>
           <div class="pt-2 flex items-center gap-4">
             <span class="font-outfit font-extrabold text-xl text-[#4a1c0d]">9 000 FCFA</span>
-            <button 
-              onclick="addToCart('Thieboudienne Royal', 9000)"
-              class="px-6 py-2.5 rounded-full bg-white hover:bg-[#4a1c0d] hover:text-white text-[#4a1c0d] font-black text-xs uppercase shadow-md transition-all cursor-pointer">
+            <button onclick="addToCart('Thieboudienne Royal', 9000)" class="px-6 py-2.5 rounded-full bg-white hover:bg-[#4a1c0d] hover:text-white text-[#4a1c0d] font-black text-xs uppercase shadow-md transition-all cursor-pointer">
               COMMANDER
             </button>
           </div>
@@ -123,7 +115,7 @@
   <section class="py-20 bg-[#f3e4ce] border-y border-[#ebdcc4] px-6 sm:px-12">
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div class="relative rounded-[2.5rem] overflow-hidden shadow-2xl h-[420px] bg-black">
-        <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1000&q=80" alt="Chef Amadou" class="w-full h-full object-cover" />
+        <img src="https://static01.nyt.com/newsgraphics/2019/07/08/chefs/assets/images/square_williams-320_x2.jpg" alt="Chef Amadou" class="w-full h-full object-cover" />
         <div class="absolute bottom-6 left-6 right-6 bg-[#3d1508]/90 backdrop-blur-md p-6 rounded-2xl text-white border border-white/10">
           <h4 class="font-outfit font-bold text-lg text-[#ffc844]">Chef Amadou Kouyaté</h4>
           <p class="text-xs text-amber-100/80">Maître Cuisinier & Spécialiste de la Gastronomie Ouest-Africaine</p>
@@ -251,7 +243,7 @@
     const modal = document.getElementById('cartModal');
     const cartList = document.getElementById('cartList');
     const cartTotal = document.getElementById('cartTotal');
-    
+
     cartList.innerHTML = `
       <div class="p-3.5 rounded-xl bg-white border border-[#ebdcc4] flex items-center justify-between text-xs font-bold shadow-xs">
         <span>${name}</span>
