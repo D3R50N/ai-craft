@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "nxpress dev",
-    "build": "tsc",
     "start": "nxpress start",
     "serve": "tsx --watch server"
   },
@@ -13,7 +12,9 @@
     "bcryptjs": "^3.0.3",
     "cookie-parser": "^1.4.7",
     "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.9.1"
+    "mongoose": "^9.9.1",
+    "prettier": "^3.9.6",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@types/bcryptjs": "^3.0.0",
