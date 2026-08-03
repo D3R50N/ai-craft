@@ -1,0 +1,55 @@
+<div class="space-y-6">
+  
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div>
+      <h1 class="font-extrabold text-3xl text-slate-900 tracking-tight">Team Members</h1>
+      <p class="text-xs text-slate-500 mt-1">Gérez vos collaborateurs et leurs accès.</p>
+    </div>
+
+    <button onclick="alert('Inviter un nouveau membre !')" class="px-5 py-2.5 rounded-full bg-[#0d3b24] text-white font-bold text-xs flex items-center gap-2 shadow-xs cursor-pointer">
+      <%- icon('user-plus', 'w-4 h-4') %>
+      <span>Inviter un membre</span>
+    </button>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    
+    <div class="bg-[#f9fafa] p-6 rounded-3xl border border-slate-200 space-y-4 text-center">
+      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alexandra" class="w-16 h-16 rounded-full mx-auto bg-pink-100 border border-slate-200 shadow-sm" />
+      <div>
+        <h3 class="font-bold text-sm text-slate-900">Alexandra Deff</h3>
+        <span class="text-xs text-slate-500">Lead Tech / Frontend</span>
+      </div>
+      <div class="pt-2 border-t border-slate-200/80 flex items-center justify-around text-xs text-slate-600 font-semibold">
+        <span>14 Tâches</span>
+        <span class="text-emerald-700 font-bold">● En ligne</span>
+      </div>
+    </div>
+
+    <div class="bg-[#f9fafa] p-6 rounded-3xl border border-slate-200 space-y-4 text-center">
+      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Edwin" class="w-16 h-16 rounded-full mx-auto bg-[#10b981] border border-slate-200 shadow-sm" />
+      <div>
+        <h3 class="font-bold text-sm text-slate-900">Edwin Adenike</h3>
+        <span class="text-xs text-slate-500">Backend Architect</span>
+      </div>
+      <div class="pt-2 border-t border-slate-200/80 flex items-center justify-around text-xs text-slate-600 font-semibold">
+        <span>9 Tâches</span>
+        <span class="text-emerald-700 font-bold">● En ligne</span>
+      </div>
+    </div>
+
+    <div class="bg-[#f9fafa] p-6 rounded-3xl border border-slate-200 space-y-4 text-center">
+      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Isaac" class="w-16 h-16 rounded-full mx-auto bg-indigo-100 border border-slate-200 shadow-sm" />
+      <div>
+        <h3 class="font-bold text-sm text-slate-900">Isaac Oluwatemilorun</h3>
+        <span class="text-xs text-slate-500">UI/UX Designer</span>
+      </div>
+      <div class="pt-2 border-t border-slate-200/80 flex items-center justify-around text-xs text-slate-600 font-semibold">
+        <span>7 Tâches</span>
+        <span class="text-amber-600 font-bold">● En réunion</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>

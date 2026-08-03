@@ -1,0 +1,57 @@
+<main class="max-w-4xl mx-auto px-6 sm:px-12 py-12 space-y-8">
+  
+  <div class="text-center space-y-3">
+    <span class="text-xs font-bold text-[#ffaa00] uppercase tracking-widest block">• SERVICE EN SALLE</span>
+    <h1 class="font-outfit font-black text-4xl sm:text-5xl text-[#4a1c0d] uppercase tracking-tight">
+      Réservez Votre Table
+    </h1>
+    <p class="text-xs sm:text-sm text-[#5c2414] font-medium max-w-lg mx-auto">
+      Remplissez le formulaire ci-dessous pour bloquer immédiatement votre table.
+    </p>
+  </div>
+
+  <div class="bg-white border-2 border-[#3d1508] rounded-[2.5rem] p-8 sm:p-12 shadow-2xl space-y-6">
+    <form onsubmit="alert('Réservation effectuée avec succès !'); return false;" class="space-y-4 text-xs font-bold">
+      <div>
+        <label class="block mb-1.5 text-[#3d1508]">Nom complet</label>
+        <input type="text" required placeholder="Alex Morgan" class="w-full px-4 py-3 rounded-xl bg-[#fcf7ee] border border-[#ebdcc4] text-[#3d1508] focus:outline-none focus:border-[#4a1c0d]" />
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block mb-1.5 text-[#3d1508]">Numéro de Téléphone</label>
+          <input type="tel" required placeholder="+33 6 12 34 56 78" class="w-full px-4 py-3 rounded-xl bg-[#fcf7ee] border border-[#ebdcc4] text-[#3d1508] focus:outline-none focus:border-[#4a1c0d]" />
+        </div>
+        <div>
+          <label class="block mb-1.5 text-[#3d1508]">Adresse Email</label>
+          <input type="email" required placeholder="alex@example.com" class="w-full px-4 py-3 rounded-xl bg-[#fcf7ee] border border-[#ebdcc4] text-[#3d1508] focus:outline-none focus:border-[#4a1c0d]" />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div>
+          <label class="block mb-1.5 text-[#3d1508]">Date souhaitée</label>
+          <input type="date" required class="w-full px-3 py-3 rounded-xl bg-[#fcf7ee] border border-[#ebdcc4] text-[#3d1508] focus:outline-none focus:border-[#4a1c0d]" />
+        </div>
+        <div>
+          <label class="block mb-1.5 text-[#3d1508]">Heure d'arrivée</label>
+          <input type="time" required class="w-full px-3 py-3 rounded-xl bg-[#fcf7ee] border border-[#ebdcc4] text-[#3d1508] focus:outline-none focus:border-[#4a1c0d]" />
+        </div>
+        <div>
+          <label class="block mb-1.5 text-[#3d1508]">Nombre de personnes</label>
+          <input type="number" min="1" max="20" value="2" required class="w-full px-3 py-3 rounded-xl bg-[#fcf7ee] border border-[#ebdcc4] text-[#3d1508] focus:outline-none focus:border-[#4a1c0d]" />
+        </div>
+      </div>
+
+      <div>
+        <label class="block mb-1.5 text-[#3d1508]">Demandes particulières (optionnel)</label>
+        <textarea rows="3" placeholder="Table au calme, allergie, anniversaire..." class="w-full px-4 py-3 rounded-xl bg-[#fcf7ee] border border-[#ebdcc4] text-[#3d1508] focus:outline-none focus:border-[#4a1c0d]"></textarea>
+      </div>
+
+      <button type="submit" class="w-full py-4 rounded-full bg-[#ffc844] hover:bg-[#f2b930] text-[#3d1508] font-black text-xs uppercase shadow-lg transition-all cursor-pointer">
+        CONFIRMER LA RÉSERVATION DE TABLE
+      </button>
+    </form>
+  </div>
+
+</main>

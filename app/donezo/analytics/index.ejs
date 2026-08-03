@@ -1,0 +1,58 @@
+<div class="space-y-8">
+  
+  <div>
+    <h1 class="font-extrabold text-3xl text-slate-900 tracking-tight">Analytics & Performance</h1>
+    <p class="text-xs text-slate-500 mt-1">Analyse détaillée de l'avancement des projets et de la vitesse de l'équipe.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="bg-[#f9fafa] p-6 rounded-3xl border border-slate-200 space-y-4">
+      <h3 class="font-extrabold text-sm text-slate-900">Vitesse de Livraison (Velocity)</h3>
+      <div class="h-64">
+        <canvas id="velocityChart"></canvas>
+      </div>
+    </div>
+
+    <div class="bg-[#f9fafa] p-6 rounded-3xl border border-slate-200 space-y-4">
+      <h3 class="font-extrabold text-sm text-slate-900">Répartition des Tâches par Priorité</h3>
+      <div class="h-64">
+        <canvas id="priorityChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const ctxV = document.getElementById('velocityChart').getContext('2d');
+    new Chart(ctxV, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'],
+        datasets: [{
+          label: 'Tâches clôturées',
+          data: [12, 19, 28, 35, 42, 58],
+          borderColor: '#0d3b24',
+          backgroundColor: 'rgba(13, 59, 36, 0.1)',
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: { responsive: true, maintainAspectRatio: false }
+    });
+
+    const ctxP = document.getElementById('priorityChart').getContext('2d');
+    new Chart(ctxP, {
+      type: 'pie',
+      data: {
+        labels: ['Haute', 'Moyenne', 'Basse'],
+        datasets: [{
+          data: [25, 45, 30],
+          backgroundColor: ['#ef4444', '#f59e0b', '#10b981']
+        }]
+      },
+      options: { responsive: true, maintainAspectRatio: false }
+    });
+  });
+</script>

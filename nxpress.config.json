@@ -1,0 +1,12 @@
+{
+  "$schema": "https://unpkg.com/@nxpress/core@latest/schema.json",
+  "port": 3000,
+  "engine": "ejs",
+  "appDir": "app",
+  "componentsDir": "components",
+  "publicDir": "public",
+  "globals": {
+    "title": "Bloggy",
+    "description": "Build fast with Nxpress"
+  }
+}

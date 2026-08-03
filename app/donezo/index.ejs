@@ -1,0 +1,295 @@
+<!-- DASHBOARD TITLE & PRIMARY ACTIONS -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+  <div>
+    <h1 class="font-extrabold text-3xl text-slate-900 tracking-tight">Dashboard</h1>
+    <p class="text-xs text-slate-500 mt-1">Plan, prioritize, and accomplish your tasks with ease.</p>
+  </div>
+
+  <div class="flex items-center gap-3">
+    <button onclick="alert('Nouveau projet créé !')" class="px-5 py-2.5 rounded-full bg-[#0d3b24] hover:bg-[#0a2e1c] text-white font-bold text-xs flex items-center gap-2 shadow-sm transition-all cursor-pointer">
+      <%- icon('plus', 'w-4 h-4') %>
+      <span>Add Project</span>
+    </button>
+    <button onclick="alert('Importation des données en cours...')" class="px-5 py-2.5 rounded-full bg-white border border-slate-300 text-slate-700 font-bold text-xs hover:bg-slate-50 transition-all cursor-pointer">
+      Import Data
+    </button>
+  </div>
+</div>
+
+<!-- ROW 1: 4 STAT METRIC CARDS -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+  <div class="bg-[#0d3b24] text-white p-6 rounded-3xl shadow-md flex flex-col justify-between min-h-[140px] relative overflow-hidden">
+    <div class="flex items-center justify-between">
+      <span class="text-xs font-bold text-emerald-100/90">Total Projects</span>
+      <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+        <%- icon('arrow-up-right', 'w-4 h-4 text-white') %>
+      </div>
+    </div>
+    <div>
+      <div class="font-extrabold text-4xl text-white mb-2">24</div>
+      <div class="flex items-center gap-1.5 text-[10px] text-emerald-300 font-medium">
+        <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 font-bold">5% ▲</span>
+        <span>Increased from last month</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-[#f9fafa] border border-slate-200/80 p-6 rounded-3xl flex flex-col justify-between min-h-[140px]">
+    <div class="flex items-center justify-between">
+      <span class="text-xs font-bold text-slate-700">Ended Projects</span>
+      <div class="w-8 h-8 rounded-full bg-slate-200/60 flex items-center justify-center text-slate-700">
+        <%- icon('arrow-up-right', 'w-4 h-4') %>
+      </div>
+    </div>
+    <div>
+      <div class="font-extrabold text-4xl text-slate-900 mb-2">10</div>
+      <div class="flex items-center gap-1.5 text-[10px] text-slate-500 font-medium">
+        <span class="px-1.5 py-0.5 rounded bg-slate-200 font-bold text-slate-700">6% ▲</span>
+        <span>Increased from last month</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-[#f9fafa] border border-slate-200/80 p-6 rounded-3xl flex flex-col justify-between min-h-[140px]">
+    <div class="flex items-center justify-between">
+      <span class="text-xs font-bold text-slate-700">Running Projects</span>
+      <div class="w-8 h-8 rounded-full bg-slate-200/60 flex items-center justify-center text-slate-700">
+        <%- icon('arrow-up-right', 'w-4 h-4') %>
+      </div>
+    </div>
+    <div>
+      <div class="font-extrabold text-4xl text-slate-900 mb-2">12</div>
+      <div class="flex items-center gap-1.5 text-[10px] text-slate-500 font-medium">
+        <span class="px-1.5 py-0.5 rounded bg-slate-200 font-bold text-slate-700">2% ▲</span>
+        <span>Increased from last month</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-[#f9fafa] border border-slate-200/80 p-6 rounded-3xl flex flex-col justify-between min-h-[140px]">
+    <div class="flex items-center justify-between">
+      <span class="text-xs font-bold text-slate-700">Pending Project</span>
+      <div class="w-8 h-8 rounded-full bg-slate-200/60 flex items-center justify-center text-slate-700">
+        <%- icon('arrow-up-right', 'w-4 h-4') %>
+      </div>
+    </div>
+    <div>
+      <div class="font-extrabold text-4xl text-slate-900 mb-2">2</div>
+      <div class="text-[10px] text-slate-400 font-medium">On Discuss</div>
+    </div>
+  </div>
+</div>
+
+<!-- ROW 2: CHART.JS BAR CHART, REMINDERS & PROJECT LIST -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+  <div class="lg:col-span-5 bg-[#f9fafa] border border-slate-200/80 p-6 rounded-3xl space-y-4">
+    <h3 class="font-extrabold text-sm text-slate-900">Project Analytics</h3>
+    <div class="w-full h-52">
+      <canvas id="analyticsChart"></canvas>
+    </div>
+  </div>
+
+  <div class="lg:col-span-3 bg-[#f9fafa] border border-slate-200/80 p-6 rounded-3xl flex flex-col justify-between space-y-4">
+    <div>
+      <h3 class="font-extrabold text-sm text-slate-900 mb-4">Reminders</h3>
+      <h4 class="font-extrabold text-base text-[#0d3b24] leading-snug">Meeting with Arc Company</h4>
+      <p class="text-xs text-slate-400 mt-1 font-mono">Time : 02.00 pm - 04.00 pm</p>
+    </div>
+
+    <button onclick="alert('Visioconférence démarrée !')" class="w-full py-3 rounded-full bg-[#0d3b24] hover:bg-[#0a2e1c] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-xs transition-colors cursor-pointer">
+      <%- icon('video', 'w-4 h-4') %>
+      <span>Start Meeting</span>
+    </button>
+  </div>
+
+  <div class="lg:col-span-4 bg-[#f9fafa] border border-slate-200/80 p-6 rounded-3xl space-y-4">
+    <div class="flex items-center justify-between">
+      <h3 class="font-extrabold text-sm text-slate-900">Project</h3>
+      <a href="<%= R.base %>/donezo/tasks" class="px-3 py-1 rounded-full bg-white border border-slate-300 text-slate-700 font-bold text-[10px] hover:bg-slate-50">
+        Voir Tout →
+      </a>
+    </div>
+
+    <div class="space-y-3 text-xs">
+      <div class="flex items-center gap-3 p-2 bg-white rounded-xl border border-slate-100 shadow-2xs">
+        <%- icon('code', 'w-4 h-4 text-indigo-600') %>
+        <div>
+          <div class="font-bold text-slate-900">Develop API Endpoints</div>
+          <div class="text-[10px] text-slate-400 font-mono">Due date: Nov 26, 2024</div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 p-2 bg-white rounded-xl border border-slate-100 shadow-2xs">
+        <%- icon('git-branch', 'w-4 h-4 text-emerald-600') %>
+        <div>
+          <div class="font-bold text-slate-900">Onboarding Flow</div>
+          <div class="text-[10px] text-slate-400 font-mono">Due date: Nov 28, 2024</div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 p-2 bg-white rounded-xl border border-slate-100 shadow-2xs">
+        <%- icon('layout', 'w-4 h-4 text-amber-600') %>
+        <div>
+          <div class="font-bold text-slate-900">Build Dashboard</div>
+          <div class="text-[10px] text-slate-400 font-mono">Due date: Nov 30, 2024</div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 p-2 bg-white rounded-xl border border-slate-100 shadow-2xs">
+        <%- icon('zap', 'w-4 h-4 text-purple-600') %>
+        <div>
+          <div class="font-bold text-slate-900">Optimize Page Load</div>
+          <div class="text-[10px] text-slate-400 font-mono">Due date: Dec 5, 2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ROW 3: TEAM COLLABORATION, CHART.JS GAUGE & LIVE TIME TRACKER -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+  <div class="lg:col-span-5 bg-[#f9fafa] border border-slate-200/80 p-6 rounded-3xl space-y-4">
+    <div class="flex items-center justify-between">
+      <h3 class="font-extrabold text-sm text-slate-900">Team Collaboration</h3>
+      <a href="<%= R.base %>/donezo/team" class="px-3 py-1 rounded-full bg-white border border-slate-300 text-slate-700 font-bold text-[10px] hover:bg-slate-50">
+        Gérer →
+      </a>
+    </div>
+
+    <div class="space-y-3">
+      <div class="flex items-center justify-between text-xs">
+        <div class="flex items-center gap-3">
+          <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alexandra" class="w-8 h-8 rounded-full bg-pink-100 border border-slate-200" />
+          <div>
+            <div class="font-bold text-slate-900">Alexandra Deff</div>
+            <div class="text-[10px] text-slate-400">Working on <span class="font-semibold text-slate-600">Github Project Repository</span></div>
+          </div>
+        </div>
+        <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[9px]">Completed</span>
+      </div>
+
+      <div class="flex items-center justify-between text-xs">
+        <div class="flex items-center gap-3">
+          <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Edwin" class="w-8 h-8 rounded-full bg-[#10b981] text-white border border-slate-200" />
+          <div>
+            <div class="font-bold text-slate-900">Edwin Adenike</div>
+            <div class="text-[10px] text-slate-400">Working on <span class="font-semibold text-slate-600">Integrate Auth System</span></div>
+          </div>
+        </div>
+        <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 font-bold text-[9px]">In Progress</span>
+      </div>
+
+      <div class="flex items-center justify-between text-xs">
+        <div class="flex items-center gap-3">
+          <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Isaac" class="w-8 h-8 rounded-full bg-indigo-100 border border-slate-200" />
+          <div>
+            <div class="font-bold text-slate-900">Isaac Oluwatemilorun</div>
+            <div class="text-[10px] text-slate-400">Working on <span class="font-semibold text-slate-600">Search and Filter</span></div>
+          </div>
+        </div>
+        <span class="px-2 py-0.5 rounded-full bg-red-100 text-red-800 font-bold text-[9px]">Pending</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lg:col-span-4 bg-[#f9fafa] border border-slate-200/80 p-6 rounded-3xl flex flex-col justify-between space-y-4">
+    <h3 class="font-extrabold text-sm text-slate-900">Project Progress</h3>
+    
+    <div class="relative w-full h-40 flex items-center justify-center">
+      <canvas id="progressChart"></canvas>
+      <div class="absolute text-center mt-6">
+        <div class="font-extrabold text-3xl text-slate-900">41%</div>
+        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Project Ended</div>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-around text-[10px] font-bold text-slate-600 border-t border-slate-200/60 pt-3">
+      <span class="flex items-center gap-1.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#0d3b24]"></span> Completed
+      </span>
+      <span class="flex items-center gap-1.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span> In Progress
+      </span>
+      <span class="flex items-center gap-1.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span> Pending
+      </span>
+    </div>
+  </div>
+
+  <div class="lg:col-span-3 bg-[#0d3b24] text-white p-6 rounded-3xl flex flex-col justify-between relative overflow-hidden space-y-4">
+    <span class="text-xs font-bold text-emerald-200">Time Tracker</span>
+    
+    <div class="text-center">
+      <div id="timerDisplay" class="font-mono font-extrabold text-3xl sm:text-4xl tracking-wider text-white">01:24:08</div>
+    </div>
+
+    <div class="flex items-center justify-center gap-4">
+      <button id="toggleTimerBtn" onclick="toggleTimer()" class="w-10 h-10 rounded-full bg-white text-[#0d3b24] flex items-center justify-center shadow-md hover:scale-105 transition-transform cursor-pointer">
+        <%- icon('pause', 'w-5 h-5 fill-current') %>
+      </button>
+      <button onclick="resetTimer()" class="w-10 h-10 rounded-full bg-red-500 text-white flex items-center justify-center shadow-md hover:scale-105 transition-transform cursor-pointer">
+        <%- icon('square', 'w-4 h-4 fill-current') %>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const ctxBar = document.getElementById('analyticsChart').getContext('2d');
+    new Chart(ctxBar, {
+      type: 'bar',
+      data: {
+        labels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+        datasets: [{
+          data: [45, 80, 74, 95, 40, 55, 45],
+          backgroundColor: ['#e2e8f0', '#0d3b24', '#34d399', '#0d3b24', '#e2e8f0', '#e2e8f0', '#e2e8f0'],
+          borderRadius: 20,
+          borderSkipped: false,
+          barThickness: 24,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: { x: { grid: { display: false } }, y: { display: false } }
+      }
+    });
+
+    const ctxProgress = document.getElementById('progressChart').getContext('2d');
+    new Chart(ctxProgress, {
+      type: 'doughnut',
+      data: {
+        labels: ['Completed', 'In Progress', 'Pending'],
+        datasets: [{
+          data: [41, 35, 24],
+          backgroundColor: ['#0d3b24', '#34d399', '#cbd5e1'],
+          borderWidth: 0,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        rotation: -90,
+        circumference: 180,
+        cutout: '78%',
+        plugins: { legend: { display: false } }
+      }
+    });
+  });
+
+  let timerSeconds = 5048;
+  let isTimerRunning = true;
+  setInterval(() => {
+    if (!isTimerRunning) return;
+    timerSeconds++;
+    const hrs = String(Math.floor(timerSeconds / 3600)).padStart(2, '0');
+    const mins = String(Math.floor((timerSeconds % 3600) / 60)).padStart(2, '0');
+    const secs = String(timerSeconds % 60).padStart(2, '0');
+    document.getElementById('timerDisplay').textContent = `${hrs}:${mins}:${secs}`;
+  }, 1000);
+
+  function toggleTimer() { isTimerRunning = !isTimerRunning; }
+  function resetTimer() { timerSeconds = 0; document.getElementById('timerDisplay').textContent = '00:00:00'; }
+</script>

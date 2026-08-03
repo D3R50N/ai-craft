@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/tailwind.css">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-outfit { font-family: 'Outfit', sans-serif; }
+  </style>
+</head>
+
+<body class="bg-[#fcf7ee] text-[#3d1508] min-h-full antialiased selection:bg-[#ffc844] selection:text-[#3d1508]">
+  
+  <!-- Shared FreshBox Header in French -->
+  <header class="w-full px-6 sm:px-12 py-5 flex items-center justify-between border-b border-[#ebdcc4]/60 bg-[#fcf7ee]/90 backdrop-blur-md sticky top-0 z-50">
+    <a href="<%= R.base %>/freshbox" class="flex items-center gap-2 group">
+      <span class="font-outfit font-extrabold text-2xl sm:text-3xl tracking-tight text-[#ffaa00] group-hover:opacity-90 transition-opacity">
+        FreshBox Afrique
+      </span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-7 text-xs font-bold text-[#5c2414]">
+      <a href="<%= R.base %>/freshbox" class="hover:text-[#ffaa00] transition-colors">Accueil</a>
+      <a href="<%= R.base %>/freshbox/menu" class="hover:text-[#ffaa00] transition-colors">Menu Africain</a>
+      <a href="<%= R.base %>/freshbox/reservation" class="hover:text-[#ffaa00] transition-colors">Réservation</a>
+      <a href="<%= R.base %>" class="hover:text-[#ffaa00] transition-colors">← Portail Hub</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="<%= R.base %>/freshbox/reservation" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full border-2 border-[#3d1508] text-[#3d1508] hover:bg-[#3d1508] hover:text-white font-extrabold text-xs transition-colors cursor-pointer">
+        RÉSERVER UNE TABLE
+      </a>
+
+      <button onclick="document.getElementById('cartModal').classList.remove('hidden')" class="px-6 py-2.5 rounded-full bg-[#ffc844] hover:bg-[#f2b930] text-[#3d1508] font-extrabold text-xs shadow-md transition-all cursor-pointer flex items-center gap-2">
+        <%- icon('shopping-bag', 'w-4 h-4') %>
+        <span>COMMANDER</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- View Content rendered inside layout -->
+  <%- body %>
+
+  <!-- Shared FreshBox Footer in French -->
+  <footer class="w-full bg-[#3d1508] text-white py-12 px-6 sm:px-12 border-t border-[#5c2414] mt-16">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-amber-100/70">
+      <a href="<%= R.base %>/freshbox" class="flex items-center gap-2">
+        <span class="font-outfit font-extrabold text-xl text-[#ffc844]">FreshBox Afrique</span>
+        <span>© 2026. Tous droits réservés.</span>
+      </a>
+      <div class="flex items-center gap-6 font-semibold">
+        <a href="<%= R.base %>/freshbox/menu" class="hover:text-white transition-colors">Menu Africain</a>
+        <a href="<%= R.base %>/freshbox/reservation" class="hover:text-white transition-colors">Réservation</a>
+        <a href="<%= R.base %>" class="hover:text-white transition-colors">Portail Hub</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Order Cart Modal in French -->
+  <div id="cartModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#3d1508]/80 backdrop-blur-sm">
+    <div class="w-full max-w-md bg-[#fcf7ee] border-2 border-[#3d1508] rounded-[2rem] p-6 sm:p-8 shadow-2xl relative text-[#3d1508]">
+      <button onclick="document.getElementById('cartModal').classList.add('hidden')" class="absolute top-5 right-5 p-2 text-[#3d1508] hover:bg-[#ebdcc4] rounded-full transition-colors cursor-pointer">
+        <%- icon('x', 'w-5 h-5') %>
+      </button>
+
+      <div class="mb-6">
+        <h3 class="font-outfit font-black text-2xl uppercase tracking-tight text-[#4a1c0d]">VOTRE COMMANDE</h3>
+        <p class="text-xs text-[#5c2414] mt-1">Plats africains ajoutés au panier</p>
+      </div>
+
+      <div id="cartList" class="space-y-3 mb-6 max-h-60 overflow-y-auto pr-1">
+        <div class="p-3.5 rounded-xl bg-white border border-[#ebdcc4] flex items-center justify-between text-xs font-bold">
+          <span>Attiéké & Poisson Grillé</span>
+          <span class="text-[#ffaa00] font-outfit font-black text-sm">8 500 FCFA</span>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-[#ebdcc4] flex items-center justify-between font-outfit font-black text-lg mb-6">
+        <span>TOTAL:</span>
+        <span id="cartTotal" class="text-[#ffaa00]">8 500 FCFA</span>
+      </div>
+
+      <button onclick="alert('Commande validée ! Votre repas africain est en préparation.'); document.getElementById('cartModal').classList.add('hidden')" class="w-full py-3.5 rounded-full bg-[#ffc844] hover:bg-[#f2b930] text-[#3d1508] font-black text-xs uppercase shadow-md transition-all cursor-pointer">
+        VALIDER LA COMMANDE
+      </button>
+    </div>
+  </div>
+
+</body>
+</html>

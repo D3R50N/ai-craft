@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/tailwind.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    code, pre { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+
+<body class="bg-[#f4f5f6] text-slate-900 min-h-full antialiased selection:bg-[#0d3b24] selection:text-white">
+  
+  <div class="w-full min-h-screen bg-white grid grid-cols-1 lg:grid-cols-12">
+    
+    <!-- LEFT SIDEBAR -->
+    <aside class="lg:col-span-2 bg-[#f9fafa] border-r border-slate-200/80 p-6 flex flex-col justify-between">
+      <div class="space-y-8">
+        
+        <!-- Brand Logo -->
+        <a href="<%= R.base %>/donezo" class="flex items-center gap-2.5 font-extrabold text-xl tracking-tight text-[#0d3b24]">
+          <div class="w-8 h-8 rounded-full border-2 border-[#0d3b24] flex items-center justify-center">
+            <%- icon('circle-dot', 'w-4 h-4 text-[#0d3b24]') %>
+          </div>
+          <span>Donezo</span>
+        </a>
+
+        <!-- Menu Section -->
+        <div class="space-y-6">
+          <div class="space-y-2">
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block px-3">MENU</span>
+            
+            <a href="<%= R.base %>/donezo" class="flex items-center justify-between px-3 py-2.5 rounded-xl <%= (typeof activeTab !== 'undefined' && activeTab === 'dashboard') ? 'bg-white border border-slate-200/80 text-[#0d3b24] font-bold text-xs shadow-xs border-l-4 border-l-[#0d3b24]' : 'text-slate-500 hover:text-slate-900 font-semibold text-xs transition-colors' %>">
+              <div class="flex items-center gap-3">
+                <%- icon('layout-grid', 'w-4 h-4 text-[#0d3b24]') %>
+                <span>Dashboard</span>
+              </div>
+            </a>
+
+            <a href="<%= R.base %>/donezo/tasks" class="flex items-center justify-between px-3 py-2.5 rounded-xl <%= (typeof activeTab !== 'undefined' && activeTab === 'tasks') ? 'bg-white border border-slate-200/80 text-[#0d3b24] font-bold text-xs shadow-xs border-l-4 border-l-[#0d3b24]' : 'text-slate-500 hover:text-slate-900 font-semibold text-xs transition-colors' %>">
+              <div class="flex items-center gap-3">
+                <%- icon('check-square', 'w-4 h-4') %>
+                <span>Tasks</span>
+              </div>
+              <span class="px-2 py-0.5 rounded-md bg-slate-200 text-slate-700 font-mono font-bold text-[9px]">12+</span>
+            </a>
+
+            <a href="<%= R.base %>/donezo/analytics" class="flex items-center justify-between px-3 py-2.5 rounded-xl <%= (typeof activeTab !== 'undefined' && activeTab === 'analytics') ? 'bg-white border border-slate-200/80 text-[#0d3b24] font-bold text-xs shadow-xs border-l-4 border-l-[#0d3b24]' : 'text-slate-500 hover:text-slate-900 font-semibold text-xs transition-colors' %>">
+              <div class="flex items-center gap-3">
+                <%- icon('bar-chart-3', 'w-4 h-4') %>
+                <span>Analytics</span>
+              </div>
+            </a>
+
+            <a href="<%= R.base %>/donezo/team" class="flex items-center justify-between px-3 py-2.5 rounded-xl <%= (typeof activeTab !== 'undefined' && activeTab === 'team') ? 'bg-white border border-slate-200/80 text-[#0d3b24] font-bold text-xs shadow-xs border-l-4 border-l-[#0d3b24]' : 'text-slate-500 hover:text-slate-900 font-semibold text-xs transition-colors' %>">
+              <div class="flex items-center gap-3">
+                <%- icon('users', 'w-4 h-4') %>
+                <span>Team</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="space-y-2">
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block px-3">GENERAL</span>
+
+            <a href="<%= R.base %>/donezo" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-500 hover:text-slate-900 font-semibold text-xs transition-colors">
+              <%- icon('settings', 'w-4 h-4') %>
+              <span>Settings</span>
+            </a>
+
+            <a href="<%= R.base %>" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-500 hover:text-slate-900 font-semibold text-xs transition-colors">
+              <%- icon('log-out', 'w-4 h-4') %>
+              <span>Quitter Hub</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Mobile App Card -->
+      <div class="bg-[#0d3b24] text-white p-4 rounded-2xl relative overflow-hidden space-y-3 mt-6">
+        <div class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center">
+          <%- icon('smartphone', 'w-3.5 h-3.5 text-white') %>
+        </div>
+        <div>
+          <h4 class="font-bold text-xs">Download Mobile App</h4>
+          <p class="text-[10px] text-emerald-100/70">Get easy in another way</p>
+        </div>
+        <button onclick="alert('Lien de téléchargement envoyé sur votre mobile !')" class="w-full py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[11px] transition-colors cursor-pointer">
+          Download
+        </button>
+      </div>
+    </aside>
+
+    <!-- RIGHT MAIN WORKSPACE -->
+    <main class="lg:col-span-10 p-6 sm:p-10 space-y-8 bg-white">
+      
+      <!-- TOP SEARCH & USER HEADER BAR -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pb-4 border-b border-slate-100">
+        
+        <div class="w-full sm:w-96 relative">
+          <%- icon('search', 'w-4 h-4 text-slate-400 absolute left-3.5 top-3') %>
+          <input type="text" id="globalTaskSearch" onkeyup="filterTasks(this.value)" placeholder="Search task..." class="w-full pl-10 pr-12 py-2.5 rounded-full bg-[#f4f5f6] border border-slate-200 text-xs font-medium focus:outline-none focus:border-[#0d3b24]" />
+          <span class="absolute right-3 top-2.5 px-1.5 py-0.5 rounded bg-white text-[9px] font-mono text-slate-400 font-bold border border-slate-200">⌘F</span>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <button onclick="alert('Vous avez 3 nouveaux messages non lus.')" class="w-9 h-9 rounded-full bg-[#f4f5f6] border border-slate-200 flex items-center justify-center text-slate-600 hover:text-slate-900 transition-colors cursor-pointer">
+            <%- icon('mail', 'w-4 h-4') %>
+          </button>
+          <button onclick="alert('Notification : Réunion Arc Company à 14h00.')" class="w-9 h-9 rounded-full bg-[#f4f5f6] border border-slate-200 flex items-center justify-center text-slate-600 hover:text-slate-900 transition-colors cursor-pointer">
+            <%- icon('bell', 'w-4 h-4') %>
+          </button>
+
+          <div class="flex items-center gap-3 pl-2 border-l border-slate-200">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Totok" class="w-9 h-9 rounded-full bg-amber-100 border border-slate-200" />
+            <div class="text-left leading-tight hidden sm:block">
+              <div class="font-extrabold text-xs text-slate-900">Totok Michael</div>
+              <div class="text-[10px] text-slate-400 font-mono">tmichael20@mail.com</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <%- body %>
+
+    </main>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<main class="w-full">
+  
+  <!-- HERO SECTION matching Image 2 (Peter Marino Architect style: Full-width grayscale Architecture + SVG Grid Overlay) -->
+  <section class="relative w-full min-h-[92vh] bg-black text-white flex flex-col justify-between p-8 sm:p-12 overflow-hidden border-b border-white/20">
+    
+    <!-- Background Monochrome Architectural Image -->
+    <div class="absolute inset-0 z-0 opacity-40">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80" alt="Architectural Structure" class="w-full h-full object-cover filter grayscale contrast-125" />
+    </div>
+
+    <!-- Geometric Compass / Architectural Grid Lines SVG Overlay -->
+    <svg class="absolute inset-0 w-full h-full opacity-30 pointer-events-none z-0" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50%" cy="50%" r="350" fill="none" stroke="white" stroke-width="1" stroke-dasharray="4 4" />
+      <line x1="0" y1="30%" x2="100%" y2="70%" stroke="white" stroke-width="1" />
+      <line x1="20%" y1="0" x2="80%" y2="100%" stroke="white" stroke-width="1" />
+    </svg>
+
+    <!-- Top Minimal Navigation -->
+    <div class="relative z-10 flex items-center justify-between font-mono text-xs uppercase tracking-widest text-slate-300">
+      <a href="<%= R.base %>/agency" class="font-bold text-white tracking-widest">KABILA STUDIO</a>
+      <div class="flex items-center gap-8">
+        <a href="<%= R.base %>/agency/projects" class="hover:text-white transition-colors">PROJETS</a>
+        <a href="<%= R.base %>/agency/awards" class="hover:text-white transition-colors">DISTINCTIONS</a>
+        <button onclick="document.getElementById('contactModal').classList.remove('hidden')" class="hover:text-white transition-colors cursor-pointer border-b border-white/50 pb-0.5">
+          CONTACT
+        </button>
+      </div>
+    </div>
+
+    <!-- Massive Overlapping Headline matching Peter Marino Architect -->
+    <div class="relative z-10 my-auto py-20 space-y-1">
+      <h1 class="font-extrabold text-6xl sm:text-8xl md:text-9xl tracking-tight text-white leading-none font-sans">
+        Kabila
+      </h1>
+      <h1 class="font-extrabold text-6xl sm:text-8xl md:text-9xl tracking-tight text-white leading-none font-sans pl-12 sm:pl-32">
+        Studio
+      </h1>
+      <h1 class="font-extrabold text-6xl sm:text-8xl md:text-9xl tracking-tight text-slate-200 leading-none font-sans">
+        Architectes
+      </h1>
+    </div>
+
+    <div class="relative z-10 flex items-center justify-between text-xs font-mono text-slate-400 uppercase tracking-widest">
+      <span>AFRICAN BRUTALIST ARCHITECTURE</span>
+      <span>01 / 10</span>
+    </div>
+  </section>
+
+  <!-- WHITE PROJECT HEADER BAR matching Image 2 -->
+  <section class="bg-white text-black py-5 px-8 sm:px-12 flex items-center justify-between border-b border-slate-300 font-mono text-xs uppercase font-extrabold tracking-wider">
+    <div>MUSÉE D'ART CONTEMPORAIN BÉTON & PIERRE</div>
+    <div class="flex items-center gap-6">
+      <span>ABIDJAN</span>
+      <span class="text-slate-400">| 10</span>
+    </div>
+  </section>
+
+  <!-- HORIZONTAL FILMSTRIP THUMBNAIL GALLERY matching Image 2 -->
+  <section class="bg-slate-200 border-b border-slate-300 overflow-x-auto py-2 px-4">
+    <div class="flex items-center gap-2 min-w-max">
+      <% filmstripImages.forEach(function(imgUrl, idx) { %>
+        <div class="w-36 h-24 bg-black border border-slate-300 shrink-0 overflow-hidden cursor-pointer group">
+          <img src="<%= imgUrl %>" alt="Architectural Detail" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-300" />
+        </div>
+      <% }); %>
+    </div>
+  </section>
+
+  <!-- EDITORIAL TEXT & SPECIFICATIONS TABLE SECTION matching Image 2 -->
+  <section class="bg-white text-black py-16 px-6 sm:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 border-b border-slate-300">
+    <div class="lg:col-span-3 font-mono text-xs uppercase font-extrabold tracking-widest text-slate-500">
+      ▪ PROJET
+    </div>
+
+    <div class="lg:col-span-9 space-y-8 font-sans">
+      <div class="space-y-4 max-w-3xl">
+        <p class="text-xs sm:text-sm text-slate-800 leading-relaxed font-bold uppercase tracking-wide">
+          LE MUSÉE D'ART CONTEMPORAIN TRADUIT LE PATRIMOINE CULTE OUEST-AFRICAIN DANS UN LANGAGE ARCHITECTURAL MODERNE EN BÉTON SCULPTÉ ET PIERRE TAILLÉE. CONÇU COMME UN ÉCRIN MONUMENTAL AU CŒUR D'ABIDJAN, L'ESPACE EXPLOITE LA LUMIÈRE ET LA MATIÈRE POUR CRÉER UNE EXPÉRIENCE IMMERSIVE SUR MESURE.
+        </p>
+        <p class="text-xs text-slate-600 leading-relaxed font-normal">
+          La pierre, l'acier et le verre définissent le noyau structurel, tandis que des proportions précises établissent un rythme spatial mesuré. L'interaction de la transparence et de la masse solide crée une sensation de légèreté monumentale.
+        </p>
+      </div>
+
+      <!-- Specifications Table matching Image 2 -->
+      <div class="border-t border-slate-300 pt-6 space-y-3 font-mono text-xs">
+        <div class="grid grid-cols-12 py-2 border-b border-slate-200">
+          <div class="col-span-4 text-slate-400 font-bold">LOCALISATION</div>
+          <div class="col-span-8 font-bold text-black">ABIDJAN, CÔTE D'IVOIRE</div>
+        </div>
+        <div class="grid grid-cols-12 py-2 border-b border-slate-200">
+          <div class="col-span-4 text-slate-400 font-bold">CONCEPTION</div>
+          <div class="col-span-8 font-bold text-black">KABILA STUDIO ARCHITECTES</div>
+        </div>
+        <div class="grid grid-cols-12 py-2 border-b border-slate-200">
+          <div class="col-span-4 text-slate-400 font-bold">ANNÉE</div>
+          <div class="col-span-8 font-bold text-black">2025</div>
+        </div>
+        <div class="grid grid-cols-12 py-2">
+          <div class="col-span-4 text-slate-400 font-bold">CONSTRUCTION</div>
+          <div class="col-span-8 font-bold text-black">BÉTON SCULPTÉ & PIERRE NATURELLE</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATEMENT QUOTE BANNER SECTION matching Image 2 -->
+  <section class="bg-[#121212] text-white py-24 px-6 sm:px-12 border-b border-white/20">
+    <div class="max-w-5xl mx-auto space-y-8">
+      <h2 class="font-extrabold text-2xl sm:text-4xl lg:text-5xl uppercase tracking-tight leading-tight font-sans">
+        —— LA PIERRE, L'ACIER ET LE VERRE DÉFINISSENT LA STRUCTURE ARCHITECTURALE, TANDIS QUE LA PROPORTION ET LE DÉTAIL —— ÉTABLISSENT UN RYTHME SPATIAL MESURÉ À TRAVERS L'INTÉRIEUR.
+      </h2>
+    </div>
+  </section>
+
+  <!-- GLOBAL REACH LOCATIONS GRID matching Image 2 -->
+  <section class="bg-[#1a1a1a] text-white py-20 px-6 sm:px-12 border-b border-white/20">
+    <div class="max-w-7xl mx-auto space-y-12">
+      <div class="font-mono text-xs uppercase tracking-widest text-slate-400">
+        ▪ RAYONNEMENT INTERNATIONAL
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 font-mono text-xs">
+        <% locations.forEach(function(loc) { %>
+          <div class="p-6 bg-black border border-white/10 space-y-3">
+            <h3 class="font-extrabold text-base text-white border-b border-white/20 pb-2"><%= loc.city %></h3>
+            <p class="text-[11px] text-slate-400 leading-relaxed font-sans font-normal"><%= loc.description %></p>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+  </section>
+
+</main>

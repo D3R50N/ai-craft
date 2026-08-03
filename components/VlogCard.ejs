@@ -1,0 +1,68 @@
+<article class="bg-neutral-900/90 border border-neutral-800 rounded-2xl overflow-hidden shadow-xl hover:border-neutral-700 transition-all duration-300 flex flex-col">
+  <!-- Video Container -->
+  <div class="relative w-full aspect-video bg-black overflow-hidden group">
+    <% if (post.embed.type === 'youtube' || post.embed.type === 'vimeo') { %>
+      <iframe 
+        src="<%= post.embed.url %>" 
+        title="<%= post.title %>"
+        class="w-full h-full border-0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    <% } else { %>
+      <video controls preload="metadata" class="w-full h-full object-cover">
+        <source src="<%= post.videoUrl %>">
+        Votre navigateur ne prend pas en charge la lecture de vidéos.
+      </video>
+    <% } %>
+  </div>
+
+  <!-- Card Body -->
+  <div class="p-5 flex flex-col flex-grow justify-between gap-4">
+    <div>
+      <!-- Author Header -->
+      <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center gap-3">
+          <img 
+            src="<%= post.author ? post.author.avatarUrl : 'https://api.dicebear.com/7.x/bottts/svg?seed=vlogger' %>" 
+            alt="<%= post.author ? post.author.username : 'Vlogueur' %>" 
+            class="w-9 h-9 rounded-full bg-neutral-800 border border-neutral-700 object-cover" 
+          />
+          <div>
+            <h4 class="text-sm font-semibold text-white leading-tight">
+              @<%= post.author ? post.author.username : 'vlogueur' %>
+            </h4>
+            <p class="text-xs text-neutral-400">
+              <%= post.formattedDate %>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Title & Description -->
+      <h3 class="text-lg font-bold text-neutral-100 mb-2 line-clamp-2 leading-snug hover:text-indigo-400 transition-colors">
+        <%= post.title %>
+      </h3>
+      <% if (post.description) { %>
+        <p class="text-sm text-neutral-400 leading-relaxed line-clamp-3">
+          <%= post.description %>
+        </p>
+      <% } %>
+    </div>
+
+    <!-- Actions / Likes -->
+    <div class="pt-3 border-t border-neutral-800 flex items-center justify-between">
+      <button 
+        onclick="toggleLike('<%= post._id %>', this)" 
+        class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors <%= post.isLiked ? 'bg-pink-500/10 text-pink-400 border border-pink-500/20' : 'bg-neutral-800/60 text-neutral-400 hover:text-white hover:bg-neutral-800' %>">
+        <svg class="w-5 h-5 <%= post.isLiked ? 'fill-pink-500 stroke-pink-500' : 'stroke-current fill-none' %>" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+        <span class="like-count"><%= post.likesCount %></span>
+        <span>J'aime</span>
+      </button>
+
+      <span class="text-xs text-neutral-500 font-mono">#vlog</span>
+    </div>
+  </div>
+</article>

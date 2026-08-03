@@ -1,0 +1,24 @@
+<main class="max-w-7xl mx-auto px-6 sm:px-12 py-16 space-y-12">
+  
+  <div class="space-y-4 text-center sm:text-left">
+    <span class="text-xs font-mono text-[#e5b842] uppercase tracking-widest block">• PALMARÈS DU STUDIO</span>
+    <h1 class="font-cinzel font-bold text-4xl sm:text-6xl text-white uppercase tracking-tight">
+      Prix & Distinctions
+    </h1>
+    <p class="text-xs sm:text-sm text-slate-400 font-light max-w-xl leading-relaxed">
+      Découvrez l'historique des prix remis au studio pour la qualité de ses travaux architecturaux.
+    </p>
+  </div>
+
+  <div class="space-y-4 font-mono text-xs">
+    <% awards.forEach(function(award) { %>
+      <div class="p-6 rounded-2xl bg-[#141417] border border-white/10 hover:border-[#e5b842]/50 transition-colors grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
+        <div class="sm:col-span-2 text-2xl font-bold text-[#e5b842]"><%= award.year %></div>
+        <div class="sm:col-span-6 font-sans font-bold text-sm text-white"><%= award.title %></div>
+        <div class="sm:col-span-2 text-slate-400 font-sans"><%= award.category %></div>
+        <div class="sm:col-span-2 text-right text-slate-500"><%= award.location %></div>
+      </div>
+    <% }); %>
+  </div>
+
+</main>

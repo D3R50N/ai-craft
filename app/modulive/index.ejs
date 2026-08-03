@@ -1,0 +1,114 @@
+<div class="min-h-screen bg-[#f8f8f6] text-slate-900 font-sans selection:bg-slate-900 selection:text-white">
+  
+  <main class="w-full max-w-7xl mx-auto px-6 sm:px-12 py-10 space-y-24">
+    
+    <!-- HERO SECTION -->
+    <section class="space-y-12 text-center">
+      
+      <div class="max-w-4xl mx-auto space-y-4">
+        <h1 class="font-extrabold text-4xl sm:text-6xl md:text-7xl tracking-tight text-slate-900 leading-[1.1]">
+          Sublimez Votre 
+          <span class="inline-flex items-center align-middle px-3 py-1 bg-slate-200 rounded-full text-xs mx-1 border border-slate-300">
+            <%- icon('armchair', 'w-4 h-4 text-slate-700') %>
+          </span>
+          Intérieur avec du<br />
+          <span class="inline-flex items-center align-middle w-16 h-8 rounded-full overflow-hidden mx-1 border border-slate-300 shadow-xs">
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover" />
+          </span>
+          Mobilier Artisanal Africain
+        </h1>
+      </div>
+
+      <!-- Hero Gallery Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 text-left items-stretch">
+        
+        <div class="lg:col-span-2 relative rounded-3xl overflow-hidden shadow-xl min-h-[380px] bg-slate-200 group">
+          <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80" alt="Mobilier Artisanal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+          
+          <div class="absolute bottom-6 right-6">
+            <a href="<%= R.base %>/modulive/products" class="px-6 py-3 rounded-full bg-slate-900 text-white font-bold text-xs flex items-center gap-2 hover:bg-slate-800 transition-all shadow-lg">
+              <span>Découvrir la Collection</span>
+              <%- icon('arrow-up-right', 'w-4 h-4') %>
+            </a>
+          </div>
+        </div>
+
+        <div class="space-y-6 flex flex-col justify-between">
+          <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-200/80 flex items-center justify-between gap-4">
+            <div class="space-y-1">
+              <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">NOUVEAUTÉ</span>
+              <h3 class="font-bold text-sm text-slate-900">Fauteuil Ébène & Raphia</h3>
+              <div class="text-xs font-extrabold text-slate-900">95 000 FCFA</div>
+            </div>
+            <div class="w-24 h-24 rounded-2xl overflow-hidden shrink-0 bg-slate-100">
+              <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=300&q=80" class="w-full h-full object-cover" />
+            </div>
+          </div>
+
+          <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-200/80 flex items-center justify-between gap-4">
+            <div class="space-y-1">
+              <span class="text-[10px] font-bold text-indigo-600 uppercase tracking-wider">VEDETTE</span>
+              <h3 class="font-bold text-sm text-slate-900">Chaise Tressée Kente</h3>
+              <div class="text-xs font-extrabold text-slate-900">75 000 FCFA</div>
+            </div>
+            <div class="w-24 h-24 rounded-2xl overflow-hidden shrink-0 bg-slate-100">
+              <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=300&q=80" class="w-full h-full object-cover" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Stats Bar -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-8 border-t border-slate-200/80">
+        <div>
+          <div class="font-extrabold text-3xl sm:text-4xl text-slate-900">100%</div>
+          <div class="text-xs text-slate-500 mt-1">Bois Nobles d'Afrique</div>
+        </div>
+        <div>
+          <div class="font-extrabold text-3xl sm:text-4xl text-slate-900">15K+</div>
+          <div class="text-xs text-slate-500 mt-1">Clients Satisfaits en Afrique</div>
+        </div>
+        <div>
+          <div class="font-extrabold text-3xl sm:text-4xl text-slate-900">Garantie</div>
+          <div class="text-xs text-slate-500 mt-1">10 Ans de Durabilité</div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- PRODUCTS SHOWCASE SECTION -->
+    <section id="products" class="space-y-8">
+      <div class="text-center space-y-4">
+        <h2 class="font-extrabold text-3xl sm:text-4xl text-slate-900 tracking-tight">
+          Nos Meilleurs Meubles Artisanaux
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <% products.forEach(function(item) { %>
+          <div class="bg-white p-6 rounded-3xl border border-slate-200/80 shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow">
+            <div class="w-full h-56 rounded-2xl overflow-hidden bg-slate-100 mb-4">
+              <img src="<%= item.image %>" alt="<%= item.name %>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            </div>
+
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="font-bold text-sm text-slate-900"><%= item.name %></h3>
+                <span class="font-extrabold text-sm text-slate-900"><%= item.price.toLocaleString() %> FCFA</span>
+              </div>
+
+              <button 
+                onclick="alert('Article <%= item.name %> ajouté au panier !')"
+                class="w-10 h-10 rounded-full bg-slate-900 hover:bg-slate-800 text-white flex items-center justify-center transition-colors cursor-pointer">
+                <%- icon('arrow-up-right', 'w-4 h-4') %>
+              </button>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </section>
+
+  </main>
+
+</div>

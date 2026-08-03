@@ -1,0 +1,264 @@
+<main class="w-full">
+  
+  <!-- HERO SECTION: "LES SAVEURS AUTHENTIQUES DE L'AFRIQUE!" -->
+  <section class="relative bg-[#f8ebd8] pt-12 pb-20 px-6 sm:px-12 overflow-hidden text-center flex flex-col items-center justify-center">
+    
+    <!-- Floating 3D Food Assets -->
+    <div class="absolute top-12 left-10 md:left-24 w-16 md:w-24 pointer-events-none transform -rotate-12 animate-bounce duration-[3000ms]">
+      <img src="https://pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG4135.png" alt="Plat Africain 3D" class="w-full h-auto drop-shadow-xl" />
+    </div>
+    
+    <div class="absolute top-20 right-10 md:right-28 w-12 md:w-16 pointer-events-none transform rotate-12 animate-pulse">
+      <img src="https://pngimg.com/uploads/tomato/tomato_PNG12509.png" alt="Epices 3D" class="w-full h-auto drop-shadow-lg" />
+    </div>
+
+    <!-- Hero Content & Massive Typography -->
+    <div class="max-w-6xl mx-auto relative z-10">
+      <h1 class="font-outfit font-black text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] leading-[0.9] text-[#4a1c0d] tracking-tight uppercase select-none">
+        SAVEURS<br />
+        D'AFRIQUE<br />
+        UN<span class="inline-block w-20 sm:w-32 md:w-44"></span>IQUES!
+      </h1>
+
+      <!-- Center Overlapping Chef/Eater Image -->
+      <div class="relative -mt-24 sm:-mt-40 md:-mt-52 mx-auto w-64 sm:w-96 md:w-[28rem] z-20">
+        <img 
+          src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80" 
+          alt="Dégustation Cuisine Africaine" 
+          class="w-full h-auto rounded-full object-cover aspect-square shadow-2xl border-4 border-[#ffc844]" 
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- DAILY CURATED ZONE MENU (Category Selector) -->
+  <section id="menu" class="py-20 px-6 sm:px-12 max-w-7xl mx-auto">
+    <div class="text-center mb-12 space-y-2">
+      <span class="text-xs font-bold text-[#ffaa00] uppercase tracking-widest block">• SPÉCIALITÉS DU CHEF</span>
+      <h2 class="font-outfit font-extrabold text-3xl sm:text-4xl text-[#4a1c0d] tracking-wide uppercase">
+        MENU GASTRONOMIQUE AFRIQUE
+      </h2>
+    </div>
+
+    <!-- Category Pill Cards -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mb-16">
+      <button class="category-btn bg-[#4a1c0d] text-white p-5 rounded-2xl flex flex-col items-center gap-3 transition-all shadow-md border border-[#4a1c0d]">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=200&q=80" class="w-14 h-14 object-cover rounded-full shadow-xs" />
+        <span class="font-bold text-xs text-white">Attiéké</span>
+      </button>
+
+      <button class="category-btn bg-[#f7efe1] hover:bg-[#ffc844] p-5 rounded-2xl flex flex-col items-center gap-3 transition-all shadow-xs border border-[#ebded0]">
+        <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=200&q=80" class="w-14 h-14 object-cover rounded-full shadow-xs" />
+        <span class="font-bold text-xs text-[#4a1c0d]">Poulet Yassa</span>
+      </button>
+
+      <button class="category-btn bg-[#f7efe1] hover:bg-[#ffc844] p-5 rounded-2xl flex flex-col items-center gap-3 transition-all shadow-xs border border-[#ebded0]">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=200&q=80" class="w-14 h-14 object-cover rounded-full shadow-xs" />
+        <span class="font-bold text-xs text-[#4a1c0d]">Thieboudienne</span>
+      </button>
+
+      <button class="category-btn bg-[#f7efe1] hover:bg-[#ffc844] p-5 rounded-2xl flex flex-col items-center gap-3 transition-all shadow-xs border border-[#ebded0]">
+        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=200&q=80" class="w-14 h-14 object-cover rounded-full shadow-xs" />
+        <span class="font-bold text-xs text-[#4a1c0d]">Choucouya / Suya</span>
+      </button>
+
+      <button class="category-btn bg-[#f7efe1] hover:bg-[#ffc844] p-5 rounded-2xl flex flex-col items-center gap-3 transition-all shadow-xs border border-[#ebded0]">
+        <img src="https://images.unsplash.com/photo-1576107232684-1279f390859f?auto=format&fit=crop&w=200&q=80" class="w-14 h-14 object-cover rounded-full shadow-xs" />
+        <span class="font-bold text-xs text-[#4a1c0d]">Alloco / Banane</span>
+      </button>
+
+      <button class="category-btn bg-[#f7efe1] hover:bg-[#ffc844] p-5 rounded-2xl flex flex-col items-center gap-3 transition-all shadow-xs border border-[#ebded0]">
+        <img src="https://images.unsplash.com/photo-1621996346565-e3d5d6281293?auto=format&fit=crop&w=200&q=80" class="w-14 h-14 object-cover rounded-full shadow-xs" />
+        <span class="font-bold text-xs text-[#4a1c0d]">Sauce Maffé</span>
+      </button>
+    </div>
+
+    <!-- FEATURED DISHES GRID -->
+    <div id="dishesGrid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <div class="bg-[#4a1c0d] text-white rounded-[2rem] p-8 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-[#381308] group hover:scale-[1.01] transition-transform">
+        <div class="flex-grow space-y-3">
+          <h3 class="font-outfit font-black text-2xl uppercase tracking-wide text-white">ATTIÉKÉ POISSON GRILLÉ</h3>
+          <p class="text-xs text-amber-100/80 leading-relaxed font-medium max-w-xs">
+            Semoule de manioc cuite à la vapeur, servie avec poisson capitaine grillé et piment maison.
+          </p>
+          <div class="pt-2 flex items-center gap-4">
+            <span class="font-outfit font-extrabold text-xl text-[#ffc844]">8 500 FCFA</span>
+            <button 
+              onclick="addToCart('Attiéké Poisson Grillé', 8500)"
+              class="px-6 py-2.5 rounded-full bg-[#ffc844] hover:bg-[#f2b930] text-[#4a1c0d] font-black text-xs uppercase shadow-md transition-all cursor-pointer">
+              COMMANDER
+            </button>
+          </div>
+        </div>
+        <div class="w-48 h-48 rounded-full overflow-hidden shrink-0 border-4 border-[#ffc844]/30 shadow-2xl">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Attiéké" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+        </div>
+      </div>
+
+      <div class="bg-[#ffc844] text-[#4a1c0d] rounded-[2rem] p-8 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-[#e6b338] group hover:scale-[1.01] transition-transform">
+        <div class="flex-grow space-y-3">
+          <h3 class="font-outfit font-black text-2xl uppercase tracking-wide text-[#4a1c0d]">THIEBOUDIENNE ROYAL</h3>
+          <p class="text-xs text-[#5c2414] leading-relaxed font-medium max-w-xs">
+            Le plat national sénégalais : riz au gras mijoté au mérou frais et légumes de saison.
+          </p>
+          <div class="pt-2 flex items-center gap-4">
+            <span class="font-outfit font-extrabold text-xl text-[#4a1c0d]">9 000 FCFA</span>
+            <button 
+              onclick="addToCart('Thieboudienne Royal', 9000)"
+              class="px-6 py-2.5 rounded-full bg-white hover:bg-[#4a1c0d] hover:text-white text-[#4a1c0d] font-black text-xs uppercase shadow-md transition-all cursor-pointer">
+              COMMANDER
+            </button>
+          </div>
+        </div>
+        <div class="w-48 h-48 rounded-full overflow-hidden shrink-0 border-4 border-white/40 shadow-2xl">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Thieboudienne" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CHEF PRESENTATION SECTION -->
+  <section class="py-20 bg-[#f3e4ce] border-y border-[#ebdcc4] px-6 sm:px-12">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="relative rounded-[2.5rem] overflow-hidden shadow-2xl h-[420px] bg-black">
+        <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1000&q=80" alt="Chef Amadou" class="w-full h-full object-cover" />
+        <div class="absolute bottom-6 left-6 right-6 bg-[#3d1508]/90 backdrop-blur-md p-6 rounded-2xl text-white border border-white/10">
+          <h4 class="font-outfit font-bold text-lg text-[#ffc844]">Chef Amadou Kouyaté</h4>
+          <p class="text-xs text-amber-100/80">Maître Cuisinier & Spécialiste de la Gastronomie Ouest-Africaine</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <span class="text-xs font-bold text-[#ffaa00] uppercase tracking-widest block">• NOTRE PATRIMOINE CULINAIRE</span>
+        <h2 class="font-outfit font-black text-3xl sm:text-5xl uppercase tracking-tight text-[#4a1c0d] leading-tight">
+          L'Authenticité des Epices et Ingrédients du Terroir
+        </h2>
+        <p class="text-xs sm:text-sm text-[#5c2414] leading-relaxed">
+          Chez FreshBox Afrique, nous mettons à l'honneur la richesse gastronomique de notre continent. Des marinades traditionnelles aux braisés parfumés au bois d'acacia, redécouvrez le vrai goût de chez nous.
+        </p>
+
+        <div class="grid grid-cols-2 gap-4 pt-4 border-t border-[#ebdcc4] text-xs font-bold text-[#4a1c0d]">
+          <div class="flex items-center gap-2">
+            <%- icon('check-circle', 'w-4 h-4 text-[#ffaa00]') %>
+            <span>Ingrédients 100% Locaux</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <%- icon('check-circle', 'w-4 h-4 text-[#ffaa00]') %>
+            <span>Livraison Rapide à Domicile</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <%- icon('check-circle', 'w-4 h-4 text-[#ffaa00]') %>
+            <span>Epices Naturelles du Terroir</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <%- icon('check-circle', 'w-4 h-4 text-[#ffaa00]') %>
+            <span>Recettes Ancestrales</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMOTIONAL BANNERS -->
+  <section id="about" class="py-20 px-6 sm:px-12 max-w-7xl mx-auto space-y-12">
+
+    <div class="bg-[#4a1c0d] text-[#ffc844] rounded-[2.5rem] overflow-hidden shadow-2xl grid grid-cols-1 lg:grid-cols-2 border border-[#381308]">
+      <div class="p-8 sm:p-12 flex flex-col justify-between space-y-6">
+        <div>
+          <h2 class="font-outfit font-black text-3xl sm:text-4xl lg:text-5xl uppercase leading-none tracking-tight text-white mb-4">
+            RÉSERVEZ VOTRE TABLE EN SALLE<br />
+            <span class="text-[#ffc844]">UN MOMENT DE CONVIVIALITÉ AFRIKA.</span>
+          </h2>
+          <p class="text-xs sm:text-sm text-amber-100/80 leading-relaxed max-w-md">
+            Venez déguster nos plats chauds et grillades dans un cadre chaleureux et traditionnel.
+          </p>
+        </div>
+        <div>
+          <a href="<%= R.base %>/freshbox/reservation" class="inline-block px-8 py-3.5 rounded-full bg-[#ffc844] hover:bg-[#f2b930] text-[#4a1c0d] font-black text-xs uppercase tracking-wider shadow-lg transition-all cursor-pointer">
+            RÉSERVER UNE TABLE
+          </a>
+        </div>
+      </div>
+      <div class="h-64 lg:h-auto relative">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80" alt="Restaurant Africain" class="w-full h-full object-cover" />
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CUSTOMER REVIEWS -->
+  <section class="py-20 bg-[#f7efe1] px-6 sm:px-12 border-t border-[#ebdcc4]">
+    <div class="max-w-7xl mx-auto space-y-12">
+      <div class="text-center space-y-2">
+        <span class="text-xs font-bold text-[#ffaa00] uppercase tracking-widest block">• AVIS GOURMANDS</span>
+        <h2 class="font-outfit font-black text-3xl sm:text-4xl text-[#4a1c0d] uppercase tracking-tight">
+          Ce Que Disent Nos Clients
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-[#fcf7ee] p-8 rounded-3xl border border-[#ebdcc4] space-y-4 shadow-sm">
+          <div class="flex items-center gap-1 text-[#ffaa00]">
+            <%- icon('star', 'w-4 h-4 fill-current') %>
+            <%- icon('star', 'w-4 h-4 fill-current') %>
+            <%- icon('star', 'w-4 h-4 fill-current') %>
+            <%- icon('star', 'w-4 h-4 fill-current') %>
+            <%- icon('star', 'w-4 h-4 fill-current') %>
+          </div>
+          <p class="text-xs text-[#5c2414] leading-relaxed font-medium">
+            "L'attiéké poisson grillé est délicieux ! Le piment est parfaitement assaisonné et le poisson très frais."
+          </p>
+          <div class="font-bold text-xs text-[#4a1c0d]">— Fatou B. (Abidjan)</div>
+        </div>
+
+        <div class="bg-[#fcf7ee] p-8 rounded-3xl border border-[#ebdcc4] space-y-4 shadow-sm">
+          <div class="flex items-center gap-1 text-[#ffaa00]">
+            <%- icon('star', 'w-4 h-4 fill-current') %>
+            <%- icon('star', 'w-4 h-4 fill-current') %>
+            <%- icon('star', 'w-4 h-4 fill-current') %>
+            <%- icon('star', 'w-4 h-4 fill-current') %>
+            <%- icon('star', 'w-4 h-4 fill-current') %>
+          </div>
+          <p class="text-xs text-[#5c2414] leading-relaxed font-medium">
+            "Le meilleur Poulet Yassa que j'ai goûté de la capitale. Un vrai régal !"
+          </p>
+          <div class="font-bold text-xs text-[#4a1c0d]">— Mamadou S. (Dakar)</div>
+        </div>
+
+        <div class="bg-[#fcf7ee] p-8 rounded-3xl border border-[#ebdcc4] space-y-4 shadow-sm">
+          <div class="flex items-center gap-1 text-[#ffaa00]">
+            <%- icon('star', 'w-4 h-4 fill-current') %>
+            <%- icon('star', 'w-4 h-4 fill-current') %>
+            <%- icon('star', 'w-4 h-4 fill-current') %>
+            <%- icon('star', 'w-4 h-4 fill-current') %>
+            <%- icon('star', 'w-4 h-4 fill-current') %>
+          </div>
+          <p class="text-xs text-[#5c2414] leading-relaxed font-medium">
+            "Brochettes Suya incroyables ! Épices Kankankan au top."
+          </p>
+          <div class="font-bold text-xs text-[#4a1c0d]">— Kofi A. (Accra)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  function addToCart(name, price) {
+    const modal = document.getElementById('cartModal');
+    const cartList = document.getElementById('cartList');
+    const cartTotal = document.getElementById('cartTotal');
+    
+    cartList.innerHTML = `
+      <div class="p-3.5 rounded-xl bg-white border border-[#ebdcc4] flex items-center justify-between text-xs font-bold shadow-xs">
+        <span>${name}</span>
+        <span class="text-[#ffaa00] font-outfit font-black text-sm">${price.toLocaleString()} FCFA</span>
+      </div>
+    `;
+    cartTotal.textContent = `${price.toLocaleString()} FCFA`;
+    modal.classList.remove('hidden');
+  }
+</script>
