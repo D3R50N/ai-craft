@@ -9,13 +9,11 @@
       </a>
       <div class="h-4 w-px bg-slate-200"></div>
       <div class="flex items-center gap-2.5">
-      
         <span class="font-black text-lg sm:text-xl text-slate-900 tracking-tight font-outfit">PixelFix</span>
       </div>
     </div>
 
     <div class="flex items-center gap-3">
-      
       <button id="newImageBtn" class="hidden text-xs font-bold text-slate-700 bg-white hover:bg-slate-100 px-3.5 py-1.5 rounded-xl border border-slate-300 transition-colors flex items-center gap-1.5 cursor-pointer">
         <%- icon('image-plus', 'w-3.5 h-3.5') %>
         <span>Changer de Photo</span>
@@ -26,7 +24,6 @@
   <!-- HERO & UPLOAD SECTION -->
   <section id="uploadSection" class="max-w-6xl mx-auto px-4 py-12 sm:py-16 text-center">
     
-  
     <!-- Main Title -->
     <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-slate-900 tracking-tight font-outfit leading-[1.05] max-w-4xl mx-auto">
       Sublimez vos visuels avec notre<br />
@@ -374,17 +371,6 @@
   // Selected crop aspect ratio
   let selectedCropRatio = 'free';
 
-  // Check if browser native Canvas ctx.filter is supported (False on iOS WebKit)
-  const isNativeCanvasFilterSupported = (() => {
-    try {
-      const tmp = document.createElement('canvas').getContext('2d');
-      tmp.filter = 'brightness(100%)';
-      return tmp.filter === 'brightness(100%)';
-    } catch (e) {
-      return false;
-    }
-  })();
-
   // DOM Elements
   const fileInput = document.getElementById('fileInput');
   const uploadSection = document.getElementById('uploadSection');
@@ -682,7 +668,6 @@
   function recalculateCroppedCanvas() {
     if (!uncroppedImage) return;
 
-    // Use intrinsic full resolution natural dimensions
     const origW = uncroppedImage.naturalWidth || uncroppedImage.width;
     const origH = uncroppedImage.naturalHeight || uncroppedImage.height;
 
@@ -730,80 +715,80 @@
     currentCroppedCanvas = tempCanvas;
   }
 
-  // PURE JS PIXEL MANIPULATION FOR MOBILE SAFARI / CHROME IOS (WEBKIT FALLBACK)
+  // PURE JS PIXEL MANIPULATION (USED FOR EXPORT / FALLBACK)
   function applyPixelFilters(targetCtx, w, h, f) {
     if (f.brightness === 100 && f.contrast === 100 && f.saturation === 100 && f.sepia === 0 && f.hue === 0) {
       return;
     }
 
-    const imgData = targetCtx.getImageData(0, 0, w, h);
-    const d = imgData.data;
+    try {
+      const imgData = targetCtx.getImageData(0, 0, w, h);
+      const d = imgData.data;
 
-    const br = f.brightness / 100;
-    const sat = f.saturation / 100;
-    const sep = f.sepia / 100;
-    const cVal = (f.contrast - 100) * 2.55;
-    const cFactor = (259 * (cVal + 255)) / (255 * (259 - cVal));
+      const br = f.brightness / 100;
+      const sat = f.saturation / 100;
+      const sep = f.sepia / 100;
+      const cVal = (f.contrast - 100) * 2.55;
+      const cFactor = (259 * (cVal + 255)) / (255 * (259 - cVal));
 
-    const hueRad = (f.hue * Math.PI) / 180;
-    const cosH = Math.cos(hueRad);
-    const sinH = Math.sin(hueRad);
+      const hueRad = (f.hue * Math.PI) / 180;
+      const cosH = Math.cos(hueRad);
+      const sinH = Math.sin(hueRad);
 
-    for (let i = 0; i < d.length; i += 4) {
-      let r = d[i];
-      let g = d[i + 1];
-      let b = d[i + 2];
+      for (let i = 0; i < d.length; i += 4) {
+        let r = d[i];
+        let g = d[i + 1];
+        let b = d[i + 2];
 
-      // 1. Brightness
-      if (br !== 1) {
-        r *= br;
-        g *= br;
-        b *= br;
+        // 1. Brightness
+        if (br !== 1) { r *= br; g *= br; b *= br; }
+
+        // 2. Contrast
+        if (f.contrast !== 100) {
+          r = cFactor * (r - 128) + 128;
+          g = cFactor * (g - 128) + 128;
+          b = cFactor * (b - 128) + 128;
+        }
+
+        // 3. Saturation
+        if (sat !== 1) {
+          const gray = 0.2989 * r + 0.5870 * g + 0.1140 * b;
+          r = gray + (r - gray) * sat;
+          g = gray + (g - gray) * sat;
+          b = gray + (b - gray) * sat;
+        }
+
+        // 4. Sepia
+        if (sep > 0) {
+          const sr = (r * 0.393 + g * 0.769 + b * 0.189);
+          const sg = (r * 0.349 + g * 0.686 + b * 0.168);
+          const sb = (r * 0.272 + g * 0.534 + b * 0.131);
+          r = r * (1 - sep) + sr * sep;
+          g = g * (1 - sep) + sg * sep;
+          b = b * (1 - sep) + sb * sep;
+        }
+
+        // 5. Hue Rotate
+        if (f.hue !== 0) {
+          const hr = r * (0.213 + cosH * 0.787 - sinH * 0.213) + g * (0.715 - cosH * 0.715 - sinH * 0.715) + b * (0.072 - cosH * 0.072 + sinH * 0.928);
+          const hg = r * (0.213 - cosH * 0.213 + sinH * 0.143) + g * (0.715 + cosH * 0.285 + sinH * 0.140) + b * (0.072 - cosH * 0.072 - sinH * 0.283);
+          const hb = r * (0.213 - cosH * 0.213 - sinH * 0.787) + g * (0.715 - cosH * 0.715 + sinH * 0.715) + b * (0.072 + cosH * 0.928 + sinH * 0.072);
+          r = hr; g = hg; b = hb;
+        }
+
+        // Clamp 0-255
+        d[i]     = r < 0 ? 0 : r > 255 ? 255 : r;
+        d[i + 1] = g < 0 ? 0 : g > 255 ? 255 : g;
+        d[i + 2] = b < 0 ? 0 : b > 255 ? 255 : b;
       }
 
-      // 2. Contrast
-      if (f.contrast !== 100) {
-        r = cFactor * (r - 128) + 128;
-        g = cFactor * (g - 128) + 128;
-        b = cFactor * (b - 128) + 128;
-      }
-
-      // 3. Saturation
-      if (sat !== 1) {
-        const gray = 0.2989 * r + 0.5870 * g + 0.1140 * b;
-        r = gray + (r - gray) * sat;
-        g = gray + (g - gray) * sat;
-        b = gray + (b - gray) * sat;
-      }
-
-      // 4. Sepia
-      if (sep > 0) {
-        const sr = (r * 0.393 + g * 0.769 + b * 0.189);
-        const sg = (r * 0.349 + g * 0.686 + b * 0.168);
-        const sb = (r * 0.272 + g * 0.534 + b * 0.131);
-        r = r * (1 - sep) + sr * sep;
-        g = g * (1 - sep) + sg * sep;
-        b = b * (1 - sep) + sb * sep;
-      }
-
-      // 5. Hue Rotate
-      if (f.hue !== 0) {
-        const hr = r * (0.213 + cosH * 0.787 - sinH * 0.213) + g * (0.715 - cosH * 0.715 - sinH * 0.715) + b * (0.072 - cosH * 0.072 + sinH * 0.928);
-        const hg = r * (0.213 - cosH * 0.213 + sinH * 0.143) + g * (0.715 + cosH * 0.285 + sinH * 0.140) + b * (0.072 - cosH * 0.072 - sinH * 0.283);
-        const hb = r * (0.213 - cosH * 0.213 - sinH * 0.787) + g * (0.715 - cosH * 0.715 + sinH * 0.715) + b * (0.072 + cosH * 0.928 + sinH * 0.072);
-        r = hr; g = hg; b = hb;
-      }
-
-      // Clamp 0-255
-      d[i]     = r < 0 ? 0 : r > 255 ? 255 : r;
-      d[i + 1] = g < 0 ? 0 : g > 255 ? 255 : g;
-      d[i + 2] = b < 0 ? 0 : b > 255 ? 255 : b;
+      targetCtx.putImageData(imgData, 0, 0);
+    } catch(e) {
+      // Ignore CORS / Tainted canvas errors on cross-origin sample images
     }
-
-    targetCtx.putImageData(imgData, 0, 0);
   }
 
-  // MAIN RENDER CANVAS FUNCTION
+  // MAIN RENDER CANVAS FUNCTION (UNIVERSAL STYLING FILTER FOR 100% MOBILE & DESKTOP SUPPORT)
   function renderCanvas(showOriginal = false) {
     if (!currentCroppedCanvas) return;
 
@@ -820,6 +805,13 @@
 
     imageDimensions.textContent = `${canvas.width} × ${canvas.height} px`;
 
+    // Apply CSS Filter on DOM Canvas element (100% SUPPORTED ON ALL IPHONES, CHROME & SAFARI)
+    if (!showOriginal) {
+      canvas.style.filter = `brightness(${filters.brightness}%) contrast(${filters.contrast}%) saturate(${filters.saturation}%) sepia(${filters.sepia}%) blur(${filters.blur}px) hue-rotate(${filters.hue}deg)`;
+    } else {
+      canvas.style.filter = 'none';
+    }
+
     ctx.save();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -828,19 +820,8 @@
     ctx.rotate((rotationAngle * Math.PI) / 180);
     ctx.scale(isFlippedH ? -1 : 1, 1);
 
-    if (!showOriginal && isNativeCanvasFilterSupported) {
-      ctx.filter = `brightness(${filters.brightness}%) contrast(${filters.contrast}%) saturate(${filters.saturation}%) sepia(${filters.sepia}%) blur(${filters.blur}px) hue-rotate(${filters.hue}deg)`;
-    } else {
-      ctx.filter = 'none';
-    }
-
     ctx.drawImage(currentCroppedCanvas, -width / 2, -height / 2, width, height);
     ctx.restore();
-
-    // Fallback Pixel Filter Engine for Mobile WebKit / iPhone
-    if (!showOriginal && !isNativeCanvasFilterSupported) {
-      applyPixelFilters(ctx, canvas.width, canvas.height, filters);
-    }
 
     // Draw Watermark Live
     if (!showOriginal) {
@@ -898,15 +879,83 @@
     ctx.restore();
   }
 
-  // DOWNLOAD EXPORT
+  // DOWNLOAD EXPORT (BAKES FILTERS & WATERMARK PERMANENTLY)
   document.getElementById('downloadBtn').addEventListener('click', () => {
     if (!canvas) return;
+    
+    // Create export offscreen canvas to bake CSS filters permanently into exported file
+    const exportCanvas = document.createElement('canvas');
+    exportCanvas.width = canvas.width;
+    exportCanvas.height = canvas.height;
+    const exportCtx = exportCanvas.getContext('2d');
+
+    exportCtx.save();
+    exportCtx.translate(exportCanvas.width / 2, exportCanvas.height / 2);
+    exportCtx.rotate((rotationAngle * Math.PI) / 180);
+    exportCtx.scale(isFlippedH ? -1 : 1, 1);
+
+    let width = currentCroppedCanvas.naturalWidth || currentCroppedCanvas.width;
+    let height = currentCroppedCanvas.naturalHeight || currentCroppedCanvas.height;
+    exportCtx.drawImage(currentCroppedCanvas, -width / 2, -height / 2, width, height);
+    exportCtx.restore();
+
+    // Bake filters via pixel engine
+    applyPixelFilters(exportCtx, exportCanvas.width, exportCanvas.height, filters);
+
+    // Draw Watermark on Export Canvas
+    const wmInput = document.getElementById('wmText');
+    if (wmInput && wmInput.value.trim()) {
+      const wmText = wmInput.value.trim();
+      const pos = document.getElementById('wmPosition').value;
+      const userSize = parseInt(document.getElementById('wmSize').value, 10);
+      const opacity = parseInt(document.getElementById('wmOpacity').value, 10) / 100;
+      const color = document.getElementById('wmColor').value;
+
+      const scaleFactor = Math.max(1, exportCanvas.width / 600);
+      const fontSize = Math.round(userSize * scaleFactor);
+
+      exportCtx.save();
+      exportCtx.globalAlpha = opacity;
+      exportCtx.font = `bold ${fontSize}px 'Plus Jakarta Sans', sans-serif`;
+      exportCtx.fillStyle = color;
+      exportCtx.shadowColor = 'rgba(0, 0, 0, 0.6)';
+      exportCtx.shadowBlur = Math.round(4 * scaleFactor);
+      exportCtx.shadowOffsetX = 2;
+      exportCtx.shadowOffsetY = 2;
+
+      const padding = Math.round(30 * scaleFactor);
+      const textWidth = exportCtx.measureText(wmText).width;
+
+      let x = padding;
+      let y = exportCanvas.height - padding;
+
+      if (pos === 'bottom-right') {
+        x = exportCanvas.width - textWidth - padding;
+        y = exportCanvas.height - padding;
+      } else if (pos === 'bottom-left') {
+        x = padding;
+        y = exportCanvas.height - padding;
+      } else if (pos === 'top-right') {
+        x = exportCanvas.width - textWidth - padding;
+        y = padding + fontSize;
+      } else if (pos === 'top-left') {
+        x = padding;
+        y = padding + fontSize;
+      } else if (pos === 'center') {
+        x = (exportCanvas.width - textWidth) / 2;
+        y = (exportCanvas.height + fontSize / 2) / 2;
+      }
+
+      exportCtx.fillText(wmText, x, y);
+      exportCtx.restore();
+    }
+
     const format = document.getElementById('exportFormat').value;
     const ext = format.split('/')[1];
     
     const link = document.createElement('a');
     link.download = `pixelfix_edited_${Date.now()}.${ext}`;
-    link.href = canvas.toDataURL(format, 0.92);
+    link.href = exportCanvas.toDataURL(format, 0.92);
     link.click();
   });
 </script>
