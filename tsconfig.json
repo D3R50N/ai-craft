@@ -3,8 +3,9 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "noEmit": true,
+    "outDir": "./dist",
+    "rootDir": ".",
+    "noEmit": false,
     "strict": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -18,7 +19,8 @@
       "@/*": [
         "./*"
       ]
-    }
+    },
+
   },
   "include": [
     "**/*.ts"
